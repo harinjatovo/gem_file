@@ -1,0 +1,27 @@
+<%= simple_form_for @geme, local: true do |f| %>
+  <% if geme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(geme.errors.count, "error") %> prohibited this geme from being saved:</h2>
+
+      <ul>
+      <% geme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :nom, label: "nom" %>
+ 
+  <%= f.input :description, label: "content", placeholder: "descruptionbde deh iih e" %>
+
+
+  <%= f.input :created_at, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12, discard_day: true,
+                              order: [:month, :year] %>
+ 
+  <%= f.input :image, as: :file %>
+  <%= f.input :age, collection: 18..60, prompt: "Select your age", selected: 21 %>
+  <%= f.association :gemes, as: :radio_buttons %>
+  <%= f.button:submit%>
+<% end %>

@@ -1,0 +1,24 @@
+
+<%= simple_form_for(@user, class: "form-horizontale") do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nom, placeholder: "votre nom" %>
+    <%= f.input :prenom, placeholder: "votre prenom" %>
+    <%= f.input :age, collection: 1..50,prompt: "choose votre age", selected: 21 %>
+    <%= f.input :contry, as: :grouped_select, group_method: :contries, priority: ['Madagascar'] %>
+    <%= f.input :addresse %>
+    <%= f.input :sexe, as: :radio_buttons, collection: [['0','femme'],['1','homme']], label_method: :second, value_method: :first %>
+
+    <%= f.association :company,label_method: :company, as: :radio_buttons%>
+    
+    <%= f.association :roles, label_method: :role, as: :check_boxes%>
+  
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

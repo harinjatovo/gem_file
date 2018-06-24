@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @geme.nom %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @geme.description %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @geme.url %>
+</p>
+
+<%= link_to 'Edit', edit_geme_path(@geme) %> |
+<%= link_to 'Back', gemes_path %>
