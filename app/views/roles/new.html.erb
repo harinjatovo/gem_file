@@ -1,0 +1,12 @@
+
+<%= form_for @role do |f| %>
+    
+    <%= f.text_field :role %> <br>
+    <%= f.fields_for :companies do |company_fields| %>
+        <%= company_fields.check_box :company_id, Company.pluck(:company, :id),{} %>
+    <% end %>  
+    
+
+    <%= f.submit %>
+    
+<% end %>
